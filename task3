@@ -1,0 +1,35 @@
+# codsoftcode
+import random
+import string
+
+def generate_password(length, complexity):
+    if complexity == 'low':
+        characters = string.ascii_letters  # Only letters (lowercase and uppercase)
+    elif complexity == 'medium':
+        characters = string.ascii_letters + string.digits  # Letters and numbers
+    elif complexity == 'high':
+        characters = string.ascii_letters + string.digits + string.punctuation  # Letters, numbers, and symbols
+    else:
+        return "Invalid complexity level."
+
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+while True:
+    print("\nOptions:")
+    print("1. Generate Password")
+    print("2. Exit")
+
+    choice = input("Enter your choice (1/2): ")
+
+    if choice == '2':
+        break
+
+    if choice == '1':
+        length = int(input("Enter the desired password length: "))
+        complexity = input("Enter the complexity level (low/medium/high): ")
+
+        password = generate_password(length, complexity)
+        print("Generated Password:", password)
+    else:
+        print("Invalid choice. Please select a valid option.")
